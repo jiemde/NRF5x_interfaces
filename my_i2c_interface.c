@@ -6,8 +6,6 @@
 
 /* uncomment the functions and in header when impplementing them */
 
-//TODO add a init function which takes two parameters
-
 /*******************************************************************************
 * Function Name  : I2C_Init
 * Description    : Initializez the I2C module
