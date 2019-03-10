@@ -360,3 +360,60 @@ uint8_t UART_disable_parity_bit(){
     return 0;
 }
 
+uint8_t UART_read_and_send_line(){
+    UART_start_receiving();
+    char buffer[100];
+    memset(buffer, 0, sizeof(buffer));
+    int i = 0;
+    while(1){
+        char a;
+        a = UART_receive_byte();
+        if (a == 13){
+            UART_send_byte(10);
+            UART_send_byte(13);
+            UART_send_bytes((uint8_t*)buffer, sizeof(buffer));
+            i++;
+            buffer[i] = '\0';
+            UART_send_byte(10);
+            UART_send_byte(13);
+            i = 0;
+            memset(buffer, 0, sizeof(buffer));
+            break;
+        }else{
+            buffer[i] = a;
+            i++;
+            UART_send_byte((uint8_t) a);
+        }
+    }
+    return 0;
+}
+
+uint8_t UART_read_line(uint8_t* buffer, int len){
+    UART_start_receiving();
+    memset(buffer, 0, len);
+    int i = 0;
+    while(1){
+        char a;
+        a = UART_receive_byte();
+        if (a == 13){
+            i++;
+            buffer[i] = '\0';
+            break;
+        }else{
+            buffer[i] = a;
+            i++;
+            UART_send_byte((uint8_t) a);
+        }
+    }
+    return 0;
+}
+
+uint8_t UART_println(uint8_t* buffer, int len){
+    UART_send_byte(10);
+    UART_send_byte(13);
+    UART_send_bytes((uint8_t*)buffer, len);
+    buffer[len-1] = '\0';
+    UART_send_byte(10);
+    UART_send_byte(13);
+    return 0;
+}

@@ -69,6 +69,11 @@ uint8_t UART_enable_parity_bit();
 
 uint8_t UART_disable_parity_bit();
 
+uint8_t UART_read_and_send_line();
+
+uint8_t UART_read_line(uint8_t* buffer, int len);
+
+uint8_t UART_println(uint8_t* buffer, int len);
 
 #ifdef __cplusplus
 }
