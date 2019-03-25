@@ -78,7 +78,6 @@ uint8_t UART_read_and_send_line();
 
 uint8_t UART_read_line(uint8_t* buffer, int len);
 
-
 #ifdef __cplusplus
 }
 #endif
