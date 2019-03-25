@@ -19,6 +19,8 @@ uint8_t UART_rx(){
 }
 */
 
+// TODO de testat functia UART.println(char* str);
+
 uint8_t UART_Init(uint32_t tx_pin, uint32_t rx_pin, uint32_t rts_pin, uint32_t cts_pin){
 
     /* Disable UART */
@@ -408,11 +410,40 @@ uint8_t UART_read_line(uint8_t* buffer, int len){
     return 0;
 }
 
-uint8_t UART_println(uint8_t* buffer, int len){
+
+//TODO check if it works
+uint8_t UART_println(char* buffer){
+//uint8_t UART_println(uint8_t* buffer, int len){
+    /*
     UART_send_byte(10);
     UART_send_byte(13);
     UART_send_bytes((uint8_t*)buffer, len);
     buffer[len-1] = '\0';
+    UART_send_byte(10);
+    UART_send_byte(13);
+    */
+    while (buffer){
+        UART_send_byte((uint8_t)*buffer);
+        buffer++;
+    }
+    UART_send_byte(10);
+    return 0;
+}
+
+uint8_t UART_line_print(char* buffer){
+//uint8_t UART_println(uint8_t* buffer, int len){
+    /*
+    UART_send_byte(10);
+    UART_send_byte(13);
+    UART_send_bytes((uint8_t*)buffer, len);
+    buffer[len-1] = '\0';
+    UART_send_byte(10);
+    UART_send_byte(13);
+    */
+    while (buffer){
+        UART_send_byte((uint8_t)*buffer);
+        buffer++;
+    }
     UART_send_byte(10);
     UART_send_byte(13);
     return 0;

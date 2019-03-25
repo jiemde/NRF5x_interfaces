@@ -3,6 +3,7 @@
 #include "nrf52.h"
 #include "nrf_gpio.h"
 #include "my_delay.h"
+#include "my_pin.h"
 
 /* uncomment the functions and in header when impplementing them */
 
@@ -32,7 +33,10 @@ void I2C_Init(uint32_t scl, uint32_t sda){
     NRF_TWI0->PSELSDA = sda;
 
     /* set the frequency to 100kbps */
-    NRF_TWI0->FREQUENCY = 0x01980000;
+    //NRF_TWI0->FREQUENCY = 0x01980000;
+
+    /* set the frequency to 400kbps */
+    NRF_TWI0->FREQUENCY = 0x06680000;
 
     /* enable the TWI module */
     NRF_TWI0->ENABLE = 0x5UL;
@@ -89,7 +93,7 @@ uint8_t I2C_write_bytes(uint8_t slave_addr,
     /* check for address errors */
     if (((NRF_TWI0->ERRORSRC >> 1) & 1) == 1){
 
-        //HERE is address error happening
+        //TODO make something on address error
 
         /* clear task stop */
         NRF_TWI0->TASKS_STOP = 0x0UL;
