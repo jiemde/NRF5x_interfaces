@@ -1,3 +1,5 @@
+/* Copyright (c) 2018 Robert Rotsching */
+
 #ifndef MY_UART_INTERFACE_H
 #define MY_UART_INTERFACE_H
 
@@ -9,7 +11,7 @@ extern "C" {
 
 /* WARNING: Uncomment the define and function name after implemented in .c file */
 
-uint8_t UART_Init(uint32_t tx_pin, uint32_t rx_pin, uint32_t rts_pin, uint32_t cts_pin);
+uint8_t UART_Init(uint32_t tx_pin, uint32_t rx_pin, uint32_t rts_pin, uint32_t cts_pin, int baudrate);
 
 uint8_t UART_available();
 

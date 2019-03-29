@@ -1,3 +1,5 @@
+/* Copyright (c) 2018 Robert Rotsching */
+
 #include "my_spi_interface.h"
 #include "nrf52.h"
 #include "nrf_gpio.h"

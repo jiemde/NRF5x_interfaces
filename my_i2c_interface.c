@@ -1,3 +1,5 @@
+/* Copyright (c) 2018 Robert Rotsching */
+
 #include <stdint.h>
 #include "my_i2c_interface.h"
 #include "nrf52.h"

@@ -1,3 +1,5 @@
+/* Copyright (c) 2018 Robert Rotsching */
+
 #ifndef MY_SPI_INTERFACE_H
 #define MY_SPI_INTERFACE_H
 
